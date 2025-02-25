@@ -10,7 +10,9 @@
     <!-- Cámara -->
     <div id="camera-view" class="screen">
         <video id="camera" autoplay></video>
-        <button id="capture">&#128308;</button>
+        <div id="capture-button">
+            <div class="inner-circle"></div>
+        </div>
     </div>
 
     <!-- Feed de imágenes -->
@@ -20,7 +22,19 @@
             <h2>@nombreperfil</h2>
             <p>57K Seguidores | 57K Siguiendo | 57K Publicaciones</p>
         </div>
-        <div class="photos">
+        <div class="carousel">
+            <button class="carousel-btn left">&lt;</button>
+            <div class="carousel-content">
+                <div class="carousel-item">foto</div>
+                <div class="carousel-item">foto</div>
+                <div class="carousel-item">foto</div>
+            </div>
+            <button class="carousel-btn right">&gt;</button>
+        </div>
+        <div class="photos-grid">
+            <div class="photo">foto</div>
+            <div class="photo">foto</div>
+            <div class="photo">foto</div>
             <div class="photo">foto</div>
             <div class="photo">foto</div>
             <div class="photo">foto</div>
