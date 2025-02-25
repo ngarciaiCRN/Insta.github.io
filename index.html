@@ -9,7 +9,7 @@
 <body>
     <!-- Cámara -->
     <div id="camera-view" class="screen">
-        <video id="camera" autoplay></video>
+        <video id="camera" autoplay playsinline></video>
         <div id="capture-button">
             <div class="inner-circle"></div>
         </div>
@@ -32,16 +32,23 @@
             <button class="carousel-btn right">&gt;</button>
         </div>
         <div class="photos-grid">
-            <div class="photo">foto</div>
-            <div class="photo">foto</div>
-            <div class="photo">foto</div>
-            <div class="photo">foto</div>
-            <div class="photo">foto</div>
-            <div class="photo">foto</div>
+            <div class="photo" ondblclick="likePhoto(this)">foto <span class="heart">❤</span></div>
+            <div class="photo" ondblclick="likePhoto(this)">foto <span class="heart">❤</span></div>
+            <div class="photo" ondblclick="likePhoto(this)">foto <span class="heart">❤</span></div>
+            <div class="photo" ondblclick="likePhoto(this)">foto <span class="heart">❤</span></div>
+            <div class="photo" ondblclick="likePhoto(this)">foto <span class="heart">❤</span></div>
+            <div class="photo" ondblclick="likePhoto(this)">foto <span class="heart">❤</span></div>
+        </div>
+        <!-- Línea divisoria -->
+        <hr class="divider">
+        <!-- Barra de navegación inferior -->
+        <div class="bottom-nav">
+            <img src="search-icon.png" alt="Buscar" class="nav-icon">
+            <img src="home-icon.png" alt="Inicio" class="nav-icon">
+            <img src="chat-icon.png" alt="Conversación" class="nav-icon">
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
