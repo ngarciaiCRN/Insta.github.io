@@ -1,33 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cameraView = document.getElementById("camera-view");
     const feed = document.getElementById("feed");
-    const camera = document.getElementById("camera");
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-    // Habilitar la cámara
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then(stream => {
-            camera.srcObject = stream;
-        })
-        .catch(error => {
-            console.error("Error al acceder a la cámara:", error);
-        });
-
-    // Swipe para cambiar entre la cámara y el feed
-    let startX;
     document.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
+        touchStartX = e.touches[0].clientX;
     });
 
-    document.addEventListener("touchend", (e) => {
-        let endX = e.changedTouches[0].clientX;
-        if (startX - endX > 50) {
-            // Deslizar a la izquierda -> Mostrar feed
+    document.addEventListener("touchmove", (e) => {
+        touchEndX = e.touches[0].clientX;
+    });
+
+    document.addEventListener("touchend", () => {
+        if (touchStartX - touchEndX > 50) {
             cameraView.style.transform = "translateX(-100%)";
             feed.style.transform = "translateX(0)";
-        } else if (endX - startX > 50) {
-            // Deslizar a la derecha -> Mostrar cámara
+        } else if (touchEndX - touchStartX > 50) {
             cameraView.style.transform = "translateX(0)";
             feed.style.transform = "translateX(100%)";
         }
     });
+
+    // Habilitar la cámara
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                document.getElementById("camera").srcObject = stream;
+            })
+            .catch((err) => {
+                console.error("Error al acceder a la cámara: ", err);
+            });
+    }
 });
